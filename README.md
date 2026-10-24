@@ -105,9 +105,21 @@ Source strings are English. Translations are ordinary gettext catalogues in `po/
 ./translate.sh --extract  # refresh the template from the QML sources
 ```
 
-Bundled: German (`de`) and Swedish (`sv`). The applet name and description in
-Plasma's widget list are translated as well, through localised keys in
-`package/metadata.json`.
+Bundled: 22 translations — Arabic, Czech, Danish, Dutch, Finnish, French,
+German, Hindi, Indonesian, Italian, Japanese, Korean, Norwegian Bokmål, Polish,
+Portuguese, Russian, Simplified Chinese, Spanish, Swedish, Turkish, Ukrainian,
+Vietnamese. The applet name and description in Plasma's widget list are
+translated as well, through localised keys in `package/metadata.json`.
+
+Honest note on coverage: together these cover roughly 40 % of the world as a
+first language and about half as a first or second language. The 25 most spoken
+languages account for only ~49 % of native speakers, and reaching 99 % would
+take several hundred of the world's 7,000 languages — far out of proportion for
+16 strings. Languages with large speaker counts that are **not** included
+(Bengali, Urdu, Punjabi, Telugu, Marathi, Tamil, Thai, Javanese, Swahili, Hausa,
+Amharic, Filipino, Persian, Cantonese, Wu) are missing deliberately: a bad
+translation is worse than an English fallback. Native speakers are welcome to
+add them.
 
 To add a language: copy `po/plasma_applet_gpumonitor.pot` to
 `po/<lang>.po`, translate the `msgstr` entries, run `./translate.sh` and restart

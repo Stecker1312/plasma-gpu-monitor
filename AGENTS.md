@@ -139,6 +139,10 @@ Representations:
 - `.mo` files are generated artefacts and are ignored by git.
 - New or changed strings: wrap in `i18n()`, run `./translate.sh --extract`, then
   fill in `po/*.po` and run `./translate.sh`.
+- The bundled non-English catalogues were produced by an agent, not reviewed by
+  native speakers. They are short technical strings, but do not claim native
+  quality anywhere in the docs. If a translation is reported as wrong, fix it
+  directly in the `.po` file; there is no upstream to wait for.
 - Testing translations without changing the system language:
 
   ```bash

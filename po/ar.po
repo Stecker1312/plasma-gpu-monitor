@@ -1,0 +1,83 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GPU Monitor 1.1\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-10-24 11:20+0200\n"
+"Last-Translator: Daniel\n"
+"Language-Team: Arabic\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
+
+#: package/contents/ui/main.qml:54 package/contents/ui/main.qml:113
+msgid "GPU"
+msgstr "GPU"
+
+#: package/contents/ui/main.qml:56
+msgid ""
+"Utilisation: %1\n"
+"Junction: %2\n"
+"Edge: %3\n"
+"Memory: %4\n"
+"Power: %5"
+msgstr "الاستخدام: %1\nالوصلة: %2\nالحافة: %3\nالذاكرة: %4\nالطاقة: %5"
+
+#: package/contents/ui/main.qml:62
+msgid "No GPU sensors found."
+msgstr "لم يتم العثور على مستشعرات GPU."
+
+#: package/contents/ui/main.qml:123
+msgid "Utilisation"
+msgstr "الاستخدام"
+
+#: package/contents/ui/main.qml:126
+msgid "Junction (Hotspot)"
+msgstr "الوصلة (النقطة الساخنة)"
+
+#: package/contents/ui/main.qml:129
+msgid "Edge"
+msgstr "الحافة"
+
+#: package/contents/ui/main.qml:132
+msgid "Memory"
+msgstr "الذاكرة"
+
+#: package/contents/ui/main.qml:135
+msgid "Power"
+msgstr "الطاقة"
+
+#: package/contents/ui/main.qml:138
+msgid "VRAM"
+msgstr "VRAM"
+
+#: package/contents/ui/main.qml:150
+msgid "Warning from %1 °C, critical from %2 °C (junction)."
+msgstr "تحذير من %1 °C، حرج من %2 °C (الوصلة)."
+
+#: package/contents/ui/configGeneral.qml:15
+msgid "Warn from:"
+msgstr "تحذير من:"
+
+#: package/contents/ui/configGeneral.qml:25
+msgid "Critical from:"
+msgstr "حرج من:"
+
+#: package/contents/ui/configGeneral.qml:35
+msgid "Display:"
+msgstr "العرض:"
+
+#: package/contents/ui/configGeneral.qml:36
+msgid "Show utilisation in the panel"
+msgstr "إظهار الاستخدام في اللوحة"
+
+#: package/contents/ui/configGeneral.qml:41
+msgid ""
+"The measured value is the junction (hotspot) temperature, not the edge "
+"temperature."
+msgstr "القيمة المقاسة هي درجة حرارة الوصلة (النقطة الساخنة)، وليست درجة حرارة الحافة."
+
+#: package/contents/config/config.qml:6
+msgid "General"
+msgstr "عام"
