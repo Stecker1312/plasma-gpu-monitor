@@ -12,7 +12,7 @@ PlasmoidItem {
     readonly property int warnTemperature: Plasmoid.configuration.warnTemperature
     readonly property int criticalTemperature: Plasmoid.configuration.criticalTemperature
 
-    // Sensorwerte sind QVariant und anfangs undefined – auf 0 normalisieren.
+    // Sensor values are QVariant and start out undefined – normalise to 0.
     function valueOf(sensor) {
         var v = sensor.value;
         return (typeof v === "number" && isFinite(v)) ? v : 0;
@@ -53,13 +53,13 @@ PlasmoidItem {
 
     toolTipMainText: i18n("GPU")
     toolTipSubText: hasData
-        ? i18n("Auslastung: %1\nJunction: %2\nEdge: %3\nSpeicher: %4\nLeistung: %5",
+        ? i18n("Utilisation: %1\nJunction: %2\nEdge: %3\nMemory: %4\nPower: %5",
                usageText,
                Math.round(junctionValue) + " °C",
                Math.round(edgeValue) + " °C",
                Math.round(memoryValue) + " °C",
                Math.round(powerValue) + " W")
-        : i18n("Keine GPU-Sensoren gefunden.")
+        : i18n("No GPU sensors found.")
 
     compactRepresentation: MouseArea {
         id: compact
@@ -74,8 +74,8 @@ PlasmoidItem {
         hoverEnabled: true
         onClicked: root.expanded = !root.expanded
 
-        // Unsichtbarer Platzhalter mit der breitesten möglichen Beschriftung,
-        // damit die Leiste beim Aktualisieren nicht springt.
+        // Invisible placeholder sized to the widest possible label, so the panel
+        // does not shift while the values update.
         Text {
             id: widthProbe
             visible: false
@@ -120,7 +120,7 @@ PlasmoidItem {
             rowSpacing: Kirigami.Units.smallSpacing
             Layout.fillWidth: true
 
-            QQC.Label { text: i18n("Auslastung") }
+            QQC.Label { text: i18n("Utilisation") }
             QQC.Label { text: root.usageText; Layout.alignment: Qt.AlignRight }
 
             QQC.Label { text: i18n("Junction (Hotspot)") }
@@ -129,10 +129,10 @@ PlasmoidItem {
             QQC.Label { text: i18n("Edge") }
             QQC.Label { text: Math.round(root.edgeValue) + " °C"; Layout.alignment: Qt.AlignRight }
 
-            QQC.Label { text: i18n("Speicher") }
+            QQC.Label { text: i18n("Memory") }
             QQC.Label { text: Math.round(root.memoryValue) + " °C"; Layout.alignment: Qt.AlignRight }
 
-            QQC.Label { text: i18n("Leistung") }
+            QQC.Label { text: i18n("Power") }
             QQC.Label { text: Math.round(root.powerValue) + " W"; Layout.alignment: Qt.AlignRight }
 
             QQC.Label { text: i18n("VRAM") }
@@ -147,7 +147,7 @@ PlasmoidItem {
         QQC.Label {
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.smallSpacing
-            text: i18n("Warnung ab %1 °C, kritisch ab %2 °C (Junction).",
+            text: i18n("Warning from %1 °C, critical from %2 °C (junction).",
                        root.warnTemperature, root.criticalTemperature)
             font: Kirigami.Theme.smallFont
             opacity: 0.7

@@ -6,7 +6,7 @@
             }
         ],
         "Category": "System Information",
-        "Description": "GPU-Auslastung und Temperatur der AMD-Grafikkarte",
+        "Description": "Shows GPU utilisation and junction temperature in the panel",
         "Icon": "utilities-system-monitor",
         "Id": "org.stecker.gpumonitor",
         "License": "MIT",

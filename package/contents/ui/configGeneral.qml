@@ -12,7 +12,7 @@ Kirigami.FormLayout {
 
     QQC.SpinBox {
         id: warnSpin
-        Kirigami.FormData.label: i18n("Warnung ab:")
+        Kirigami.FormData.label: i18n("Warn from:")
         from: 40
         to: 110
         stepSize: 1
@@ -22,7 +22,7 @@ Kirigami.FormLayout {
 
     QQC.SpinBox {
         id: criticalSpin
-        Kirigami.FormData.label: i18n("Kritisch ab:")
+        Kirigami.FormData.label: i18n("Critical from:")
         from: 50
         to: 115
         stepSize: 1
@@ -32,13 +32,13 @@ Kirigami.FormLayout {
 
     QQC.CheckBox {
         id: showUsageCheck
-        Kirigami.FormData.label: i18n("Anzeige:")
-        text: i18n("Auslastung in der Leiste mit anzeigen")
+        Kirigami.FormData.label: i18n("Display:")
+        text: i18n("Show utilisation in the panel")
     }
 
     QQC.Label {
         Kirigami.FormData.isSection: false
-        text: i18n("Gemessen wird die Junction-Temperatur (Hotspot), nicht die Edge-Temperatur.")
+        text: i18n("The measured value is the junction (hotspot) temperature, not the edge temperature.")
         font: Kirigami.Theme.smallFont
         opacity: 0.7
         wrapMode: Text.WordWrap

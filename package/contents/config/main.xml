@@ -6,19 +6,19 @@
   <kcfgfile name=""/>
   <group name="General">
     <entry name="warnTemperature" type="Int">
-      <label>Warnschwelle (Junction)</label>
+      <label>Warning threshold (junction)</label>
       <default>85</default>
       <min>40</min>
       <max>110</max>
     </entry>
     <entry name="criticalTemperature" type="Int">
-      <label>Kritische Schwelle (Junction)</label>
+      <label>Critical threshold (junction)</label>
       <default>100</default>
       <min>50</min>
       <max>115</max>
     </entry>
     <entry name="showUsage" type="Bool">
-      <label>Auslastung anzeigen</label>
+      <label>Show utilisation</label>
       <default>true</default>
     </entry>
   </group>

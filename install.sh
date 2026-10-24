@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Installiert das Applet als Symlink in den Plasma-Plasmoid-Ordner.
-# Aufruf: ./install.sh
+# Installs the applet as a symlink into the Plasma plasmoid directory.
+# Usage: ./install.sh
 set -euo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -13,12 +13,12 @@ if [ -L "$target" ]; then
 elif [ -d "$target" ]; then
     backup="${target}.bak.$(date +%Y%m%d%H%M%S)"
     mv "$target" "$backup"
-    echo "Vorhandene Installation gesichert: $backup"
+    echo "Existing installation backed up to: $backup"
 fi
 
 ln -s "$here/package" "$target"
-echo "Installiert: $target -> $here/package"
+echo "Installed: $target -> $here/package"
 echo
-echo "Plasma neu laden, damit das Applet erscheint:"
+echo "Reload Plasma so the applet appears:"
 echo "    systemctl --user restart plasma-plasmashell.service"
-echo "Danach per Rechtsklick auf die Leiste -> Widgets hinzufuegen -> 'GPU Monitor'."
+echo "Then right-click the panel -> Add Widgets -> 'GPU Monitor'."
