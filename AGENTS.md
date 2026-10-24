@@ -6,7 +6,7 @@ achten muss.
 
 ## Ausgangslage (wichtig!)
 
-Der Eigentümer (Daniel, GitHub `thechemixinc`) hat dieses Applet einmal
+Der Eigentümer (Daniel, GitHub `Stecker1312`) hat dieses Applet einmal
 erstellt und **wird es nicht selbst pflegen**. Es gibt keine regelmäßige
 menschliche Wartung. Wenn du hier etwas änderst, bist du für Korrektheit und
 Rücksicht auf ein laufendes System verantwortlich.
@@ -31,9 +31,14 @@ nicht die Auslastungsanzeige.**
 - **Keine Abhängigkeiten einführen.** Kein Build-Schritt, kein C++-Plugin, keine
   Python-Hilfsskripte, keine externen Dienste. Das Applet ist reines QML und liest
   Sensoren über ein Modul, das Plasma selbst mitbringt.
-- **Applet-ID `org.daniel.gpumonitor` nicht ändern.** Sie steht in der
+- **Applet-ID `org.stecker.gpumonitor` nicht ändern.** Sie steht in der
   Panel-Konfiguration des Nutzers (`~/.config/plasma-org.kde.plasma.desktop-appletsrc`).
   Eine Umbenennung entfernt das laufende Widget aus der Leiste.
+  Die ID ist bewusst vom GitHub-Handle entkoppelt, damit Namenswechsel dort keine
+  Migration auslösen. (Historie: das Applet hieß bis Oktober 2026
+  `org.daniel.gpumonitor`; ein Umzug erfordert: `metadata.json`, `install.sh`,
+  Symlink, altes Widget aus dem Panel entfernen, Plasma neu starten, neues Widget
+  hinzufügen.)
 - **Keine Secrets, keine Telemetrie, kein Netzwerkzugriff.** Das Applet liest
   ausschließlich lokale Sensoren.
 - Sprache in Dokumentation und Oberfläche: Deutsch (Oberfläche nutzt `i18n()`).
@@ -66,7 +71,7 @@ docs/screenshot.png          Ausschnitt der Leiste mit dem Widget
 Installiert wird per Symlink:
 
 ```
-~/.local/share/plasma/plasmoids/org.daniel.gpumonitor -> <repo>/package
+~/.local/share/plasma/plasmoids/org.stecker.gpumonitor -> <repo>/package
 ```
 
 Das heißt: **Änderungen im Repo sind sofort die laufende Version.** Es gibt keine

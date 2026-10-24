@@ -37,7 +37,7 @@ Beide Schwellen sind einstellbar.
 ## Installation
 
 ```bash
-git clone https://github.com/thechemixinc/plasma-gpu-monitor.git
+git clone https://github.com/Stecker1312/plasma-gpu-monitor.git
 cd plasma-gpu-monitor
 ./install.sh
 systemctl --user restart plasma-plasmashell.service
@@ -48,7 +48,7 @@ Danach Rechtsklick auf die Leiste → *Widgets hinzufügen* → **GPU Monitor**.
 `install.sh` legt lediglich einen Symlink an:
 
 ```
-~/.local/share/plasma/plasmoids/org.daniel.gpumonitor -> <repo>/package
+~/.local/share/plasma/plasmoids/org.stecker.gpumonitor -> <repo>/package
 ```
 
 Dadurch ist die Repo-Version immer die laufende Version.
@@ -56,7 +56,7 @@ Dadurch ist die Repo-Version immer die laufende Version.
 Deinstallieren:
 
 ```bash
-rm ~/.local/share/plasma/plasmoids/org.daniel.gpumonitor
+rm ~/.local/share/plasma/plasmoids/org.stecker.gpumonitor
 ```
 
 ## Konfiguration

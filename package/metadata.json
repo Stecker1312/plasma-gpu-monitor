@@ -8,7 +8,7 @@
         "Category": "System Information",
         "Description": "GPU-Auslastung und Temperatur der AMD-Grafikkarte",
         "Icon": "utilities-system-monitor",
-        "Id": "org.daniel.gpumonitor",
+        "Id": "org.stecker.gpumonitor",
         "License": "MIT",
         "Name": "GPU Monitor",
         "Version": "1.0"

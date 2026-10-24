@@ -4,7 +4,7 @@
 set -euo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-target="${XDG_DATA_HOME:-$HOME/.local/share}/plasma/plasmoids/org.daniel.gpumonitor"
+target="${XDG_DATA_HOME:-$HOME/.local/share}/plasma/plasmoids/org.stecker.gpumonitor"
 
 mkdir -p "$(dirname "$target")"
 
