@@ -149,8 +149,11 @@ PlasmoidItem {
     }
 
     fullRepresentation: ColumnLayout {
+        // Width only. A preferredHeight bound to implicitHeight creates a
+        // dependency cycle and makes Plasma fall back to its default popup size
+        // (560 x 400), which leaves a huge empty area around short content.
         Layout.preferredWidth: Kirigami.Units.gridUnit * 13
-        Layout.preferredHeight: implicitHeight
+        Layout.maximumWidth: Kirigami.Units.gridUnit * 13
         spacing: Kirigami.Units.smallSpacing
 
         Kirigami.Heading {

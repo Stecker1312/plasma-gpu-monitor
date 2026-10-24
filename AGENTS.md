@@ -135,6 +135,16 @@ Representations:
 9. Every new user-visible string has to be translated into **all** catalogues at
    once, because `check.sh` fails on incomplete catalogues. Two words
    ("Warning", "Critical") were added this way — follow the same pattern.
+10. Popup size is not content-driven by itself. `fullRepresentation` **must** cap
+    its width (`Layout.maximumWidth`); without it the content sits inside a
+    562 x 229 dialog where most of the width is empty, because Plasma keeps its
+    parent default. Never bind `Layout.preferredHeight: implicitHeight` on the
+    root layout of the popup: that dependency cycle makes Plasma fall back to its
+    default size (560 x 400).
+11. The popup cannot be opened from outside (`applet.expanded` is not exposed to
+    panel scripting). To inspect it, add a temporary
+    `Timer { interval: 3000; running: true; onTriggered: root.expanded = true }`
+    to the QML, restart plasmashell, screenshot, then remove the timer again.
 
 ## Accessibility
 
