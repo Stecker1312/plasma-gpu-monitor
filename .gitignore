@@ -1,3 +1,4 @@
 *.bak.*
 *.qmlc
+*.mo
 /.idea/

@@ -18,6 +18,10 @@ fi
 
 ln -s "$here/package" "$target"
 echo "Installed: $target -> $here/package"
+
+if [ -x "$here/translate.sh" ]; then
+    "$here/translate.sh"
+fi
 echo
 echo "Reload Plasma so the applet appears:"
 echo "    systemctl --user restart plasma-plasmashell.service"

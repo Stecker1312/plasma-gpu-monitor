@@ -33,6 +33,7 @@ Both thresholds are configurable.
 - Tooltip with the same values, no click required
 - Fixed width, so the panel does not shift while values update
 - Pure QML: no dependencies, no build step, no background service
+- Translated into German and Swedish; adding a language is a single `.po` file
 
 ## Installation
 
@@ -94,6 +95,27 @@ busctl --user call org.kde.ksystemstats1 /org/kde/ksystemstats1 \
 - single GPU only (`gpu/gpu0`)
 - no history graphs, current values only
 - no NVIDIA support (untested)
+
+## Languages
+
+Source strings are English. Translations are ordinary gettext catalogues in `po/`.
+
+```bash
+./translate.sh            # compile po/*.po and install them for the current user
+./translate.sh --extract  # refresh the template from the QML sources
+```
+
+Bundled: German (`de`) and Swedish (`sv`). The applet name and description in
+Plasma's widget list are translated as well, through localised keys in
+`package/metadata.json`.
+
+To add a language: copy `po/plasma_applet_gpumonitor.pot` to
+`po/<lang>.po`, translate the `msgstr` entries, run `./translate.sh` and restart
+Plasma. No build system, no recompilation of the source strings.
+
+The catalogue name matters: Plasma uses `plasma_applet_<applet id>` as its
+translation domain, so the compiled file has to be
+`plasma_applet_org.stecker.gpumonitor.mo`. `translate.sh` takes care of that.
 
 ## Development
 

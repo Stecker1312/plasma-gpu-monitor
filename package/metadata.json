@@ -7,11 +7,15 @@
         ],
         "Category": "System Information",
         "Description": "Shows GPU utilisation and junction temperature in the panel",
+        "Description[de]": "Zeigt GPU-Auslastung und Junction-Temperatur in der Leiste",
+        "Description[sv]": "Visar GPU-belastning och junction-temperatur i panelen",
         "Icon": "utilities-system-monitor",
         "Id": "org.stecker.gpumonitor",
         "License": "MIT",
         "Name": "GPU Monitor",
-        "Version": "1.0"
+        "Name[de]": "GPU-Monitor",
+        "Name[sv]": "GPU-övervakning",
+        "Version": "1.1"
     },
     "KPackageStructure": "Plasma/Applet",
     "X-Plasma-API-Minimum-Version": "6.0",

@@ -121,6 +121,36 @@ Representations:
 6. When writing QML files with tools that redact phone numbers, long numeric
    literals (for example `1024 * 1024 * 1024`) can be damaged. Re-read the file
    after writing.
+7. The translation domain is derived, not free: Plasma looks for
+   `plasma_applet_<applet id>`. A catalogue named `plasma_applet_gpumonitor` or
+   after the plain plugin id is **silently ignored**. Also, adding
+   `X-KDE-TranslationDomain` to `metadata.json` does *not* fix this for applets —
+   it is not the switch that sets the QML i18n domain.
+
+## Localisation
+
+- Every user-visible string goes through `i18n()`; the source language is English.
+- Catalogues live in `po/` and are compiled by `translate.sh` into
+  `${XDG_DATA_HOME:-$HOME/.local/share}/locale/<lang>/LC_MESSAGES/`.
+- The file must be named `plasma_applet_org.stecker.gpumonitor.mo` (see pitfall 7).
+- Applet name and description are translated through localised keys in
+  `package/metadata.json` (`"Name[de]"`, `"Description[de]"`). These do show up in
+  the widget list and in `kpackagetool6 --show`.
+- `.mo` files are generated artefacts and are ignored by git.
+- New or changed strings: wrap in `i18n()`, run `./translate.sh --extract`, then
+  fill in `po/*.po` and run `./translate.sh`.
+- Testing translations without changing the system language:
+
+  ```bash
+  systemctl --user set-environment LANGUAGE=de
+  systemctl --user restart plasma-plasmashell.service
+  # check, then revert:
+  systemctl --user unset-environment LANGUAGE
+  systemctl --user restart plasma-plasmashell.service
+  ```
+
+  Tip: temporarily bind a translated string into the compact representation to
+  make it visible without hovering or opening a dialog.
 
 ## Testing changes (mandatory before every commit)
 
