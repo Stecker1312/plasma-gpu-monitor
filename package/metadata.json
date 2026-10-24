@@ -1,0 +1,19 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "Daniel"
+            }
+        ],
+        "Category": "System Information",
+        "Description": "GPU-Auslastung und Temperatur der AMD-Grafikkarte",
+        "Icon": "utilities-system-monitor",
+        "Id": "org.daniel.gpumonitor",
+        "License": "MIT",
+        "Name": "GPU Monitor",
+        "Version": "1.0"
+    },
+    "KPackageStructure": "Plasma/Applet",
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "X-Plasma-MainScript": "ui/main.qml"
+}

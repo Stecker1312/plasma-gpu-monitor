@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+  <kcfgfile name=""/>
+  <group name="General">
+    <entry name="warnTemperature" type="Int">
+      <label>Warnschwelle (Junction)</label>
+      <default>85</default>
+      <min>40</min>
+      <max>110</max>
+    </entry>
+    <entry name="criticalTemperature" type="Int">
+      <label>Kritische Schwelle (Junction)</label>
+      <default>100</default>
+      <min>50</min>
+      <max>115</max>
+    </entry>
+    <entry name="showUsage" type="Bool">
+      <label>Auslastung anzeigen</label>
+      <default>true</default>
+    </entry>
+  </group>
+</kcfg>
