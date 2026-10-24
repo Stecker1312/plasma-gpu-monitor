@@ -46,7 +46,7 @@ PlasmoidItem {
     readonly property bool critical: hasData && junctionValue >= criticalTemperature
 
     // Non-colour cue, so the warning does not rely on colour perception alone.
-    readonly property string stateCue: critical ? " !!" : (warning ? " !" : "")
+    readonly property string stateCue: critical ? "!!" : (warning ? "!" : "")
 
     readonly property string usageText: Math.round(usageValue) + " %"
     readonly property string temperatureText: hasData ? Math.round(junctionValue) + " °C" + stateCue : "-- °C"
@@ -84,10 +84,13 @@ PlasmoidItem {
     compactRepresentation: Item {
         id: compact
 
-        readonly property int horizontalSpacing: Kirigami.Units.smallSpacing * 2
+        readonly property int horizontalPadding: Kirigami.Units.smallSpacing
 
-        Layout.minimumWidth: widthProbe.implicitWidth + horizontalSpacing
-        Layout.preferredWidth: widthProbe.implicitWidth + horizontalSpacing
+        // Width follows the content. Tabular figures keep every digit the same
+        // width, so only a change in the number of digits (or the appearance of
+        // the warning cue) makes the item grow.
+        Layout.minimumWidth: content.implicitWidth + horizontalPadding * 2
+        Layout.preferredWidth: content.implicitWidth + horizontalPadding * 2
         Layout.minimumHeight: content.implicitHeight
         Layout.preferredHeight: content.implicitHeight
 
@@ -105,21 +108,11 @@ PlasmoidItem {
         // Visible focus ring; the panel has no other indication of focus.
         Rectangle {
             anchors.fill: parent
-            anchors.margins: -Kirigami.Units.smallSpacing
             visible: compact.activeFocus
             color: "transparent"
             border.width: 1
             border.color: Kirigami.Theme.focusColor
             radius: Kirigami.Units.smallSpacing
-        }
-
-        // Invisible placeholder sized to the widest possible label, so the panel
-        // does not shift while the values update.
-        Text {
-            id: widthProbe
-            visible: false
-            font: Kirigami.Theme.defaultFont
-            text: Plasmoid.configuration.showUsage ? "100 % 100 °C !!" : "100 °C !!"
         }
 
         MouseArea {
@@ -140,13 +133,17 @@ PlasmoidItem {
                 visible: Plasmoid.configuration.showUsage
                 text: root.usageText
                 color: Kirigami.Theme.textColor
-                font: Kirigami.Theme.defaultFont
+                font.family: Kirigami.Theme.defaultFont.family
+                font.pointSize: Kirigami.Theme.defaultFont.pointSize
+                font.features: ({ "tnum": 1 })
             }
 
             Text {
                 text: root.temperatureText
                 color: root.temperatureColor
-                font: Kirigami.Theme.defaultFont
+                font.family: Kirigami.Theme.defaultFont.family
+                font.pointSize: Kirigami.Theme.defaultFont.pointSize
+                font.features: ({ "tnum": 1 })
             }
         }
     }

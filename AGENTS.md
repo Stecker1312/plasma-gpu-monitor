@@ -92,8 +92,11 @@ There is no second copy to keep in sync.
 
 Representations:
 
-- `compactRepresentation` – text in the panel, width pinned through an invisible
-  placeholder (`widthProbe`) so the panel does not shift.
+- `compactRepresentation` – text in the panel. The width follows the content;
+  tabular figures (`font.features: {"tnum": 1}`) keep digit widths equal, so the
+  item only grows when the number of digits changes or the warning cue appears.
+  An earlier version reserved the worst case ("100 % 100 °C !!"), which left
+  almost half of the panel item empty — do not reintroduce that.
 - `fullRepresentation` – popup on click, showing every value.
 - `toolTipSubText` – the same values as a tooltip.
 - Colour: below `warnTemperature` normal, from the warning threshold onwards
@@ -139,8 +142,8 @@ A temperature warning that only works for people who see colour or use a mouse i
 not much of a warning. Three things must not regress:
 
 1. **Colour is never the only cue.** `stateCue` appends `!` (warning) or `!!`
-   (critical) to the temperature value. Keep the width placeholder
-   (`widthProbe`) in sync with the longest possible label.
+   (critical) to the temperature value. The item width follows the content, so
+   the cue simply makes it slightly wider — no placeholder to maintain.
 2. **Screen reader labels.** The compact item sets `Accessible.role: Button`,
    `Accessible.name` and `Accessible.description`. The description is assembled
    from translated strings and appends `stateText` ("Warning" / "Critical"),
