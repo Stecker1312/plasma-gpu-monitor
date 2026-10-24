@@ -81,3 +81,19 @@ msgstr "测量的是结温（热点），而不是边缘温度。"
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "常规"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "频率"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "风扇"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "警告"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "严重"

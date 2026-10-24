@@ -81,3 +81,19 @@ msgstr "El valor mesurat és la temperatura de junció (punt calent), no la temp
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "General"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "Freqüència"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "Ventilador"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "Avís"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "Crític"

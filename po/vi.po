@@ -81,3 +81,19 @@ msgstr "Giá trị đo được là nhiệt độ junction (điểm nóng), khô
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "Chung"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "Xung nhịp"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "Quạt"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "Cảnh báo"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "Nguy hiểm"

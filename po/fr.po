@@ -81,3 +81,19 @@ msgstr "La valeur mesurée est la température de jonction (point chaud), pas la
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "Général"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "Fréquence"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "Ventilateur"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "Alerte"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "Critique"

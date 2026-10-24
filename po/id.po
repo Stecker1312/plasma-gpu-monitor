@@ -81,3 +81,19 @@ msgstr "Nilai yang diukur adalah suhu junction (titik panas), bukan suhu tepi."
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "Umum"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "Frekuensi"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "Kipas"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "Peringatan"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "Kritis"

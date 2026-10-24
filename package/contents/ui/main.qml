@@ -23,6 +23,8 @@ PlasmoidItem {
     readonly property real edgeValue: valueOf(edgeSensor)
     readonly property real memoryValue: valueOf(memorySensor)
     readonly property real powerValue: valueOf(powerSensor)
+    readonly property real clockValue: valueOf(clockSensor)
+    readonly property real fanValue: valueOf(fanSensor)
     readonly property real vramUsedValue: valueOf(vramUsedSensor)
     readonly property real vramTotalValue: valueOf(vramTotalSensor)
 
@@ -40,14 +42,32 @@ PlasmoidItem {
         return Kirigami.Theme.textColor;
     }
 
+    readonly property bool warning: hasData && junctionValue >= warnTemperature
+    readonly property bool critical: hasData && junctionValue >= criticalTemperature
+
+    // Non-colour cue, so the warning does not rely on colour perception alone.
+    readonly property string stateCue: critical ? " !!" : (warning ? " !" : "")
+
     readonly property string usageText: Math.round(usageValue) + " %"
-    readonly property string temperatureText: hasData ? Math.round(junctionValue) + " °C" : "-- °C"
+    readonly property string temperatureText: hasData ? Math.round(junctionValue) + " °C" + stateCue : "-- °C"
+
+    // Text for screen readers: values plus the warning state, since colour and
+    // the "!" cue are visual only.
+    readonly property string stateText: critical ? i18n("Critical") : (warning ? i18n("Warning") : "")
+
+    readonly property string accessibleText: hasData
+        ? i18n("Utilisation") + ": " + Math.round(usageValue) + " %, "
+          + i18n("Junction (Hotspot)") + ": " + Math.round(junctionValue) + " °C"
+          + (stateText ? ", " + stateText : "")
+        : i18n("No GPU sensors found.")
 
     Sensors.Sensor { id: usageSensor; sensorId: "gpu/gpu0/usage"; updateRateLimit: 2000 }
     Sensors.Sensor { id: junctionSensor; sensorId: "gpu/gpu0/temp2"; updateRateLimit: 2000 }
     Sensors.Sensor { id: edgeSensor; sensorId: "gpu/gpu0/temperature"; updateRateLimit: 5000 }
     Sensors.Sensor { id: memorySensor; sensorId: "gpu/gpu0/temp3"; updateRateLimit: 5000 }
     Sensors.Sensor { id: powerSensor; sensorId: "gpu/gpu0/power"; updateRateLimit: 5000 }
+    Sensors.Sensor { id: clockSensor; sensorId: "gpu/gpu0/coreFrequency"; updateRateLimit: 5000 }
+    Sensors.Sensor { id: fanSensor; sensorId: "gpu/gpu0/fan1"; updateRateLimit: 5000 }
     Sensors.Sensor { id: vramUsedSensor; sensorId: "gpu/gpu0/usedVram"; updateRateLimit: 5000 }
     Sensors.Sensor { id: vramTotalSensor; sensorId: "gpu/gpu0/totalVram"; updateRateLimit: 5000 }
 
@@ -61,7 +81,7 @@ PlasmoidItem {
                Math.round(powerValue) + " W")
         : i18n("No GPU sensors found.")
 
-    compactRepresentation: MouseArea {
+    compactRepresentation: Item {
         id: compact
 
         readonly property int horizontalSpacing: Kirigami.Units.smallSpacing * 2
@@ -69,10 +89,29 @@ PlasmoidItem {
         Layout.minimumWidth: widthProbe.implicitWidth + horizontalSpacing
         Layout.preferredWidth: widthProbe.implicitWidth + horizontalSpacing
         Layout.minimumHeight: content.implicitHeight
-        Layout.preferredHeight: Layout.minimumHeight
+        Layout.preferredHeight: content.implicitHeight
 
-        hoverEnabled: true
-        onClicked: root.expanded = !root.expanded
+        // Keyboard reachable, so the details are available without a mouse.
+        activeFocusOnTab: true
+
+        Accessible.role: Accessible.Button
+        Accessible.name: i18n("GPU")
+        Accessible.description: root.accessibleText
+        Accessible.onPressAction: root.expanded = !root.expanded
+
+        Keys.onReturnPressed: root.expanded = !root.expanded
+        Keys.onSpacePressed: root.expanded = !root.expanded
+
+        // Visible focus ring; the panel has no other indication of focus.
+        Rectangle {
+            anchors.fill: parent
+            anchors.margins: -Kirigami.Units.smallSpacing
+            visible: compact.activeFocus
+            color: "transparent"
+            border.width: 1
+            border.color: Kirigami.Theme.focusColor
+            radius: Kirigami.Units.smallSpacing
+        }
 
         // Invisible placeholder sized to the widest possible label, so the panel
         // does not shift while the values update.
@@ -80,7 +119,16 @@ PlasmoidItem {
             id: widthProbe
             visible: false
             font: Kirigami.Theme.defaultFont
-            text: Plasmoid.configuration.showUsage ? "100 % 100 °C" : "100 °C"
+            text: Plasmoid.configuration.showUsage ? "100 % 100 °C !!" : "100 °C !!"
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            hoverEnabled: true
+            onClicked: {
+                compact.forceActiveFocus();
+                root.expanded = !root.expanded;
+            }
         }
 
         RowLayout {
@@ -134,6 +182,18 @@ PlasmoidItem {
 
             QQC.Label { text: i18n("Power") }
             QQC.Label { text: Math.round(root.powerValue) + " W"; Layout.alignment: Qt.AlignRight }
+
+            QQC.Label { text: i18n("Clock") }
+            QQC.Label {
+                text: root.clockValue > 0 ? Math.round(root.clockValue) + " MHz" : "--"
+                Layout.alignment: Qt.AlignRight
+            }
+
+            QQC.Label { text: i18n("Fan") }
+            QQC.Label {
+                text: root.fanValue > 0 ? Math.round(root.fanValue) + " RPM" : "--"
+                Layout.alignment: Qt.AlignRight
+            }
 
             QQC.Label { text: i18n("VRAM") }
             QQC.Label {

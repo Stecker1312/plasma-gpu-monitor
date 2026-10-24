@@ -81,3 +81,19 @@ msgstr "Matuojama junction (karštojo taško) temperatūra, o ne krašto tempera
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "Bendra"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "Dažnis"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "Ventiliatorius"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "Įspėjimas"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "Kritinė"

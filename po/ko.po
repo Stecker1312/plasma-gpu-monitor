@@ -81,3 +81,19 @@ msgstr "측정값은 정션(핫스팟) 온도이며 엣지 온도가 아닙니�
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "일반"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "클럭"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "팬"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "경고"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "위험"

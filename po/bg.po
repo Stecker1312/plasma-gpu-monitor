@@ -81,3 +81,19 @@ msgstr "Измерва се температурата junction (гореща т
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "Общи"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "Честота"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "Вентилатор"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "Предупреждение"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "Критично"

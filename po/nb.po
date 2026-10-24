@@ -81,3 +81,19 @@ msgstr "Den målte verdien er junction-temperaturen (hotspot), ikke kanttemperat
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "Generelt"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "Frekvens"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "Vifte"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "Advarsel"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "Kritisk"

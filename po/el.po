@@ -81,3 +81,19 @@ msgstr "Η μετρούμενη τιμή είναι η θερμοκρασία έ
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "Γενικά"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "Συχνότητα"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "Ανεμιστήρας"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "Προειδοποίηση"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "Κρίσιμο"

@@ -81,3 +81,19 @@ msgstr "Mitattu arvo on junction-lämpötila (hotspot), ei reunalämpötila."
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "Yleiset"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "Kello"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "Tuuletin"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "Varoitus"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "Kriittinen"

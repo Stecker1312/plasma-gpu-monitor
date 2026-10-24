@@ -81,3 +81,19 @@ msgstr "De gemeten waarde is de junction-temperatuur (hotspot), niet de randtemp
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "Algemeen"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "Klok"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "Ventilator"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "Waarschuwing"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "Kritiek"

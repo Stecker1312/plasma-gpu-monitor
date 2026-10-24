@@ -81,3 +81,19 @@ msgstr "القيمة المقاسة هي درجة حرارة الوصلة (ال�
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "عام"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "التردد"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "المروحة"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "تحذير"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "حرج"

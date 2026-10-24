@@ -81,3 +81,19 @@ msgstr "Valoarea măsurată este temperatura joncțiunii (hotspot), nu temperatu
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "General"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "Frecvență"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "Ventilator"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "Avertizare"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "Critic"

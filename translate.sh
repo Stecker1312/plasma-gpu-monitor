@@ -8,14 +8,16 @@ set -euo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 domain="plasma_applet_org.stecker.gpumonitor"
+potname="plasma_applet_gpumonitor"
 locale_dir="${XDG_DATA_HOME:-$HOME/.local/share}/locale"
 
 if [ "${1:-}" = "--extract" ]; then
-    xgettext --language=C++ --from-code=UTF-8 --keyword=i18n:1 --add-comments \
-        --package-name="GPU Monitor" \
-        -o "$here/po/$domain.pot" \
-        "$here"/package/contents/ui/*.qml "$here"/package/contents/config/config.qml
-    echo "Template refreshed: po/$domain.pot"
+    # Run from the repo root so the template holds relative paths, not /home/...
+    ( cd "$here" && xgettext --language=C++ --from-code=UTF-8 --keyword=i18n:1 \
+        --add-comments --package-name="GPU Monitor" \
+        -o "po/$potname.pot" \
+        package/contents/ui/*.qml package/contents/config/config.qml )
+    echo "Template refreshed: po/$potname.pot"
 fi
 
 if ! command -v msgfmt >/dev/null; then

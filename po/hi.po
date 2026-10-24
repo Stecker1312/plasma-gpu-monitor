@@ -81,3 +81,19 @@ msgstr "मापा गया मान जंक्शन (हॉटस्प�
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "सामान्य"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "क्लॉक"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "पंखा"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "चेतावनी"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "गंभीर"

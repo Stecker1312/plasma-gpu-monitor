@@ -81,3 +81,19 @@ msgstr "Vlera e matur është temperatura junction (pika e nxehtë), jo temperat
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "Të përgjithshme"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "Frekuenca"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "Ventilatori"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "Paralajmërim"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "Kritik"

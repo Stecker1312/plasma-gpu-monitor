@@ -126,6 +126,42 @@ Representations:
    after the plain plugin id is **silently ignored**. Also, adding
    `X-KDE-TranslationDomain` to `metadata.json` does *not* fix this for applets —
    it is not the switch that sets the QML i18n domain.
+8. `translate.sh --extract` must run from the repository root. Otherwise xgettext
+   writes absolute `/home/<user>/...` paths into the template. The script now
+   changes directory itself; keep it that way.
+9. Every new user-visible string has to be translated into **all** catalogues at
+   once, because `check.sh` fails on incomplete catalogues. Two words
+   ("Warning", "Critical") were added this way — follow the same pattern.
+
+## Accessibility
+
+A temperature warning that only works for people who see colour or use a mouse is
+not much of a warning. Three things must not regress:
+
+1. **Colour is never the only cue.** `stateCue` appends `!` (warning) or `!!`
+   (critical) to the temperature value. Keep the width placeholder
+   (`widthProbe`) in sync with the longest possible label.
+2. **Screen reader labels.** The compact item sets `Accessible.role: Button`,
+   `Accessible.name` and `Accessible.description`. The description is assembled
+   from translated strings and appends `stateText` ("Warning" / "Critical"),
+   because colour and `!` are visual only.
+3. **Keyboard operation.** `activeFocusOnTab`, `Keys.onReturnPressed` and
+   `Keys.onSpacePressed` on the compact item, plus a visible focus ring bound to
+   `compact.activeFocus`.
+
+Verification, without permanently enabling a screen reader:
+
+```bash
+systemctl --user set-environment QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
+systemctl --user restart plasma-plasmashell.service
+# then walk the AT-SPI tree with pyatspi and look for name == "GPU"
+systemctl --user unset-environment QT_LINUX_ACCESSIBILITY_ALWAYS_ON
+systemctl --user restart plasma-plasmashell.service
+```
+
+Expected: one node with `role=button`, `name="GPU"` and a description such as
+`Utilisation: 4 %, Junction (Hotspot): 47 °C, Critical`.
+
 
 ## Localisation
 
@@ -159,6 +195,9 @@ Representations:
 ## Testing changes (mandatory before every commit)
 
 ```bash
+# 0. Static checks: metadata, catalogues, template, consistency
+./check.sh
+
 # 1. Reload Plasma (this actually reloads the changed QML)
 systemctl --user restart plasma-plasmashell.service
 

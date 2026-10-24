@@ -81,3 +81,19 @@ msgstr "Вимірюється температура junction (hotspot), а н�
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "Загальні"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "Частота"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "Вентилятор"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "Попередження"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "Критично"

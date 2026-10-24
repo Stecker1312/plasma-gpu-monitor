@@ -81,3 +81,19 @@ msgstr "Mērītā vērtība ir junction (karstā punkta) temperatūra, nevis mal
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "Vispārīgi"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "Frekvence"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "Ventilators"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "Brīdinājums"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "Kritiski"

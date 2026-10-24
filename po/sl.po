@@ -81,3 +81,19 @@ msgstr "Izmerjena vrednost je temperatura junction (vroča točka), ne temperatu
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "Splošno"
+
+#: package/contents/ui/main.qml:183
+msgid "Clock"
+msgstr "Takt"
+
+#: package/contents/ui/main.qml:189
+msgid "Fan"
+msgstr "Ventilator"
+
+#: package/contents/ui/main.qml:56
+msgid "Warning"
+msgstr "Opozorilo"
+
+#: package/contents/ui/main.qml:56
+msgid "Critical"
+msgstr "Kritično"

@@ -27,13 +27,16 @@ Both thresholds are configurable.
 ## Features
 
 - Utilisation in percent and junction temperature directly in the panel
-- Colour-coded temperature warning
-- Clicking opens a popup with edge and memory temperature, power draw and VRAM
-  usage
+- Colour-coded temperature warning that does **not** rely on colour alone: an
+  exclamation mark (`!` warning, `!!` critical) accompanies the colour
+- Click or keyboard (Tab, then Enter or Space) opens a popup with edge and memory
+  temperature, power draw, clock, fan speed and VRAM usage
+- Labelled for screen readers: name, role and a spoken description including the
+  warning state
 - Tooltip with the same values, no click required
 - Fixed width, so the panel does not shift while values update
 - Pure QML: no dependencies, no build step, no background service
-- Translated into German and Swedish; adding a language is a single `.po` file
+- Translated into 38 languages; adding another is a single `.po` file
 
 ## Installation
 
@@ -96,6 +99,30 @@ busctl --user call org.kde.ksystemstats1 /org/kde/ksystemstats1 \
 - no history graphs, current values only
 - no NVIDIA support (untested)
 
+## Accessibility
+
+Deliberately not an afterthought, because a temperature warning is useless if it
+only works for people who can see colour or use a mouse:
+
+- **Not colour-only.** Above the warning threshold the value gains `!`, above the
+  critical threshold `!!`. Colour perception is not required to notice the state.
+- **Screen reader support.** The panel item exposes itself as a button named
+  "GPU" with a description like "Utilisation: 12 %, Junction (Hotspot): 92 °C,
+  Warning". The state word is included because colour and `!` are visual.
+- **Keyboard accessible.** The item is focusable with Tab and opens with Enter or
+  Space, with a visible focus ring. Mouse is optional.
+
+Checking it without permanently enabling a screen reader:
+
+```bash
+systemctl --user set-environment QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
+systemctl --user restart plasma-plasmashell.service
+python3 -c 'import pyatspi; print([a.name for a in pyatspi.Registry.getDesktop(0)])'
+# afterwards:
+systemctl --user unset-environment QT_LINUX_ACCESSIBILITY_ALWAYS_ON
+systemctl --user restart plasma-plasmashell.service
+```
+
 ## Languages
 
 Source strings are English. Translations are ordinary gettext catalogues in `po/`.
@@ -138,9 +165,11 @@ Technical documentation for maintenance and troubleshooting lives in
 [AGENTS.md](AGENTS.md) — sensor IDs, known pitfalls and a test routine to run
 before every commit.
 
-In short: edit files under `package/`, restart Plasma, check, commit.
+In short: edit files under `package/`, run `./check.sh`, restart Plasma, check,
+commit.
 
 ```bash
+./check.sh
 systemctl --user restart plasma-plasmashell.service
 journalctl --user --since "-1min" --no-pager | grep -iE 'qml.*error|Unable to assign'
 ```
