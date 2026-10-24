@@ -105,21 +105,24 @@ Source strings are English. Translations are ordinary gettext catalogues in `po/
 ./translate.sh --extract  # refresh the template from the QML sources
 ```
 
-Bundled: 22 translations — Arabic, Czech, Danish, Dutch, Finnish, French,
-German, Hindi, Indonesian, Italian, Japanese, Korean, Norwegian Bokmål, Polish,
-Portuguese, Russian, Simplified Chinese, Spanish, Swedish, Turkish, Ukrainian,
-Vietnamese. The applet name and description in Plasma's widget list are
-translated as well, through localised keys in `package/metadata.json`.
+Bundled: 38 translations — Albanian, Arabic, Bosnian, Bulgarian, Catalan,
+Chinese (Simplified), Croatian, Czech, Danish, Dutch, Estonian, Finnish, French,
+German, Greek, Hindi, Hungarian, Icelandic, Indonesian, Italian, Japanese,
+Korean, Latvian, Lithuanian, Macedonian, Norwegian Bokmål, Polish, Portuguese,
+Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swedish, Turkish,
+Ukrainian, Vietnamese. The applet name and description in Plasma's widget list
+are translated as well, through localised keys in `package/metadata.json`.
 
-Honest note on coverage: together these cover roughly 40 % of the world as a
-first language and about half as a first or second language. The 25 most spoken
-languages account for only ~49 % of native speakers, and reaching 99 % would
-take several hundred of the world's 7,000 languages — far out of proportion for
-16 strings. Languages with large speaker counts that are **not** included
-(Bengali, Urdu, Punjabi, Telugu, Marathi, Tamil, Thai, Javanese, Swahili, Hausa,
-Amharic, Filipino, Persian, Cantonese, Wu) are missing deliberately: a bad
-translation is worse than an English fallback. Native speakers are welcome to
-add them.
+Honest note on coverage: the smaller European languages add only about 100
+million first-language speakers, so they hardly move the global percentage —
+together with the large languages this is roughly 40 % of the world as a first
+language. They are here because KDE's user base is disproportionately European,
+which is where a translation actually gets seen. Reaching 99 % of the world
+would take several hundred of its 7,000 languages: far out of proportion for 16
+strings. Languages with large speaker counts that are **not** included (Bengali,
+Urdu, Punjabi, Telugu, Marathi, Tamil, Thai, Javanese, Swahili, Hausa, Amharic,
+Filipino, Persian, Cantonese, Wu) are missing deliberately: a bad translation is
+worse than an English fallback. Native speakers are welcome to add them.
 
 To add a language: copy `po/plasma_applet_gpumonitor.pot` to
 `po/<lang>.po`, translate the `msgstr` entries, run `./translate.sh` and restart
