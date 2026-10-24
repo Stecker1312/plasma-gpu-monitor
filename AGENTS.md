@@ -133,10 +133,10 @@ journalctl --user --since "-1min" --no-pager \
   | grep -iE 'gpumonitor|qml.*error|Unable to assign|read-only'
 
 # 3. Check visually: screenshot of the panel
-spectacle -b -n -f -o /tmp/opencode/panel.png
+spectacle -b -n -f -o /tmp/panel.png
 python3 -c "
 from PIL import Image
-Image.open('/tmp/opencode/panel.png').crop((1400, 1140, 1920, 1200)).save('/tmp/opencode/panel_crop.png')
+Image.open('/tmp/panel.png').crop((1400, 1140, 1920, 1200)).save('/tmp/panel_crop.png')
 "
 ```
 
