@@ -87,7 +87,7 @@
         "Name[uk]": "Монітор GPU",
         "Name[vi]": "Giám sát GPU",
         "Name[zh_CN]": "GPU 监视器",
-        "Version": "1.4"
+        "Version": "1.5"
     },
     "KPackageStructure": "Plasma/Applet",
     "X-Plasma-API-Minimum-Version": "6.0",
