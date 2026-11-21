@@ -1,7 +1,8 @@
 # GPU Monitor – Plasma applet
 
 Shows **GPU utilisation and junction temperature** in the KDE panel — and warns
-you with colour before the graphics card gets too hot.
+you with colour before the graphics card gets too hot. The **CPU temperature**
+can be shown as well, with its own warning thresholds.
 
 ![Screenshot](docs/screenshot.png)
 
@@ -27,8 +28,10 @@ Both thresholds are configurable.
 ## Features
 
 - Utilisation in percent and junction temperature directly in the panel
-- Colour-coded temperature warning that does **not** rely on colour alone: an
-  exclamation mark (`!` warning, `!!` critical) accompanies the colour
+- Optional CPU temperature (hottest core) next to it, switched on in the settings
+- Colour-coded temperature warnings for GPU and CPU that do **not** rely on
+  colour alone: an exclamation mark (`!` warning, `!!` critical) accompanies the
+  colour
 - Click or keyboard (Tab, then Enter or Space) opens a popup with edge and memory
   temperature, power draw, clock, fan speed and VRAM usage
 - Labelled for screen readers: name, role and a spoken description including the
@@ -67,13 +70,16 @@ rm ~/.local/share/plasma/plasmoids/org.stecker.gpumonitor
 
 Right-click the widget → **Configure GPU Monitor**
 
-- warning threshold in °C (default 85)
-- critical threshold in °C (default 100)
+- GPU warning threshold in °C (default 85)
+- GPU critical threshold in °C (default 100)
 - show or hide the utilisation figure in the panel
+- show or hide the CPU temperature in the panel (default off)
+- CPU warning and critical thresholds in °C (default 80 and 90)
 
-The thresholds refer to the junction temperature. AMD specifies 110 °C as the
-maximum for Navi 31 (RX 7900 XT/XTX), so the red stage at 100 °C still leaves
-some headroom.
+The GPU thresholds refer to the junction temperature. AMD specifies 110 °C as
+the maximum for Navi 31 (RX 7900 XT/XTX), so the red stage at 100 °C still
+leaves some headroom. The CPU value is the hottest core; Ryzen 5000 throttles at
+90 °C, hence the lower default thresholds. Both CPU thresholds are configurable.
 
 ## Compatibility
 
@@ -81,7 +87,7 @@ some headroom.
 | --- | --- |
 | Tested with | Bazzite, Plasma 6.7.5, Wayland |
 | GPU | AMD Radeon RX 7900 XTX (Navi 31), `amdgpu` |
-| Requirement | Plasma 6, `ksystemstats` with the GPU plugin |
+| Requirement | Plasma 6, `ksystemstats` with the GPU plugin (CPU plugin for the optional CPU temperature) |
 
 Other AMD cards using `amdgpu` should work as long as `ksystemstats` exposes them
 as `gpu/gpu0`. NVIDIA is untested.
@@ -90,7 +96,7 @@ Check which sensors are available:
 
 ```bash
 busctl --user call org.kde.ksystemstats1 /org/kde/ksystemstats1 \
-  org.kde.ksystemstats1 allSensors --json=short | grep -o '"gpu/[^"]*"'
+  org.kde.ksystemstats1 allSensors --json=short | grep -oE '"(gpu|cpu)/[^"]*"'
 ```
 
 ## Limitations
@@ -98,6 +104,8 @@ busctl --user call org.kde.ksystemstats1 /org/kde/ksystemstats1 \
 - single GPU only (`gpu/gpu0`)
 - no history graphs, current values only
 - no NVIDIA support (untested)
+- the CPU value is the hottest core (`cpu/all/maximumTemperature`), not a
+  per-core breakdown
 
 ## Accessibility
 
@@ -107,8 +115,9 @@ only works for people who can see colour or use a mouse:
 - **Not colour-only.** Above the warning threshold the value gains `!`, above the
   critical threshold `!!`. Colour perception is not required to notice the state.
 - **Screen reader support.** The panel item exposes itself as a button named
-  "GPU" with a description like "Utilisation: 12 %, Junction (Hotspot): 92 °C,
-  Warning". The state word is included because colour and `!` are visual.
+  "GPU" (or "GPU / CPU" when the CPU temperature is shown) with a description
+  like "Utilisation: 12 %, Junction (Hotspot): 92 °C, Warning". The state word is
+  included because colour and `!` are visual.
 - **Keyboard accessible.** The item is focusable with Tab and opens with Enter or
   Space, with a visible focus ring. Mouse is optional.
 

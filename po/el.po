@@ -2,6 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GPU Monitor 1.2\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-24 12:20+0200\n"
 "PO-Revision-Date: 2026-10-24 11:40+0200\n"
 "Last-Translator: Daniel\n"
 "Language-Team: Greek\n"
@@ -11,89 +12,121 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: package/contents/ui/main.qml:54 package/contents/ui/main.qml:113
+#: package/contents/ui/configGeneral.qml:18 package/contents/ui/main.qml:108
+#: package/contents/ui/main.qml:139 package/contents/ui/main.qml:174
+#: package/contents/ui/main.qml:232
 msgid "GPU"
 msgstr "GPU"
 
-#: package/contents/ui/main.qml:56
+#: package/contents/ui/configGeneral.qml:23
+#: package/contents/ui/configGeneral.qml:60
+msgid "Warn from:"
+msgstr "Προειδοποίηση από:"
+
+#: package/contents/ui/configGeneral.qml:33
+#: package/contents/ui/configGeneral.qml:71
+msgid "Critical from:"
+msgstr "Κρίσιμο από:"
+
+#: package/contents/ui/configGeneral.qml:43
+msgid "Display:"
+msgstr "Εμφάνιση:"
+
+#: package/contents/ui/configGeneral.qml:44
+msgid "Show utilisation in the panel"
+msgstr "Εμφάνιση χρήσης στον πίνακα"
+
+#: package/contents/ui/configGeneral.qml:49 package/contents/ui/main.qml:91
+#: package/contents/ui/main.qml:108 package/contents/ui/main.qml:117
+#: package/contents/ui/main.qml:139 package/contents/ui/main.qml:204
+#: package/contents/ui/main.qml:281
+msgid "CPU"
+msgstr "CPU"
+
+#: package/contents/ui/configGeneral.qml:54
+msgid "Show CPU temperature in the panel"
+msgstr "Εμφάνιση θερμοκρασίας CPU στον πίνακα"
+
+#: package/contents/ui/configGeneral.qml:81
+msgid ""
+"The measured value is the junction (hotspot) temperature, not the edge "
+"temperature."
+msgstr ""
+"Η μετρούμενη τιμή είναι η θερμοκρασία ένωσης (hotspot), όχι η θερμοκρασία "
+"άκρης."
+
+#. Text for screen readers: values plus the warning state, since colour and
+#. the "!" cue are visual only.
+#: package/contents/ui/main.qml:76 package/contents/ui/main.qml:77
+msgid "Critical"
+msgstr "Κρίσιμο"
+
+#: package/contents/ui/main.qml:76 package/contents/ui/main.qml:77
+msgid "Warning"
+msgstr "Προειδοποίηση"
+
+#: package/contents/ui/main.qml:84 package/contents/ui/main.qml:242
+msgid "Utilisation"
+msgstr "Χρήση"
+
+#: package/contents/ui/main.qml:85 package/contents/ui/main.qml:245
+msgid "Junction (Hotspot)"
+msgstr "Ένωση (hotspot)"
+
+#: package/contents/ui/main.qml:88 package/contents/ui/main.qml:120
+msgid "No GPU sensors found."
+msgstr "Δεν βρέθηκαν αισθητήρες GPU."
+
+#: package/contents/ui/main.qml:110
 msgid ""
 "Utilisation: %1\n"
 "Junction: %2\n"
 "Edge: %3\n"
 "Memory: %4\n"
 "Power: %5"
-msgstr "Χρήση: %1\nΈνωση: %2\nΆκρη: %3\nΜνήμη: %4\nΙσχύς: %5"
+msgstr ""
+"Χρήση: %1\n"
+"Ένωση: %2\n"
+"Άκρη: %3\n"
+"Μνήμη: %4\n"
+"Ισχύς: %5"
 
-#: package/contents/ui/main.qml:62
-msgid "No GPU sensors found."
-msgstr "Δεν βρέθηκαν αισθητήρες GPU."
-
-#: package/contents/ui/main.qml:123
-msgid "Utilisation"
-msgstr "Χρήση"
-
-#: package/contents/ui/main.qml:126
-msgid "Junction (Hotspot)"
-msgstr "Ένωση (hotspot)"
-
-#: package/contents/ui/main.qml:129
+#: package/contents/ui/main.qml:248
 msgid "Edge"
 msgstr "Άκρη"
 
-#: package/contents/ui/main.qml:132
+#: package/contents/ui/main.qml:251
 msgid "Memory"
 msgstr "Μνήμη"
 
-#: package/contents/ui/main.qml:135
+#: package/contents/ui/main.qml:254
 msgid "Power"
 msgstr "Ισχύς"
 
-#: package/contents/ui/main.qml:138
+#: package/contents/ui/main.qml:257
+msgid "Clock"
+msgstr "Συχνότητα"
+
+#: package/contents/ui/main.qml:263
+msgid "Fan"
+msgstr "Ανεμιστήρας"
+
+#: package/contents/ui/main.qml:269
 msgid "VRAM"
 msgstr "VRAM"
 
-#: package/contents/ui/main.qml:150
+#: package/contents/ui/main.qml:293
+msgid "Temperature"
+msgstr "Θερμοκρασία"
+
+#: package/contents/ui/main.qml:300
 msgid "Warning from %1 °C, critical from %2 °C (junction)."
 msgstr "Προειδοποίηση από %1 °C, κρίσιμο από %2 °C (ένωση)."
 
-#: package/contents/ui/configGeneral.qml:15
-msgid "Warn from:"
-msgstr "Προειδοποίηση από:"
-
-#: package/contents/ui/configGeneral.qml:25
-msgid "Critical from:"
-msgstr "Κρίσιμο από:"
-
-#: package/contents/ui/configGeneral.qml:35
-msgid "Display:"
-msgstr "Εμφάνιση:"
-
-#: package/contents/ui/configGeneral.qml:36
-msgid "Show utilisation in the panel"
-msgstr "Εμφάνιση χρήσης στον πίνακα"
-
-#: package/contents/ui/configGeneral.qml:41
-msgid ""
-"The measured value is the junction (hotspot) temperature, not the edge "
-"temperature."
-msgstr "Η μετρούμενη τιμή είναι η θερμοκρασία ένωσης (hotspot), όχι η θερμοκρασία άκρης."
+#: package/contents/ui/main.qml:303
+msgid "CPU: warning from %1 °C, critical from %2 °C."
+msgstr "CPU: προειδοποίηση από %1 °C, κρίσιμο από %2 °C."
 
 #: package/contents/config/config.qml:6
 msgid "General"
 msgstr "Γενικά"
-
-#: package/contents/ui/main.qml:183
-msgid "Clock"
-msgstr "Συχνότητα"
-
-#: package/contents/ui/main.qml:189
-msgid "Fan"
-msgstr "Ανεμιστήρας"
-
-#: package/contents/ui/main.qml:56
-msgid "Warning"
-msgstr "Προειδοποίηση"
-
-#: package/contents/ui/main.qml:56
-msgid "Critical"
-msgstr "Κρίσιμο"

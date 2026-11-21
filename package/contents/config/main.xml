@@ -21,5 +21,21 @@
       <label>Show utilisation</label>
       <default>true</default>
     </entry>
+    <entry name="showCpuTemperature" type="Bool">
+      <label>Show CPU temperature</label>
+      <default>false</default>
+    </entry>
+    <entry name="cpuWarnTemperature" type="Int">
+      <label>Warning threshold (CPU)</label>
+      <default>80</default>
+      <min>40</min>
+      <max>110</max>
+    </entry>
+    <entry name="cpuCriticalTemperature" type="Int">
+      <label>Critical threshold (CPU)</label>
+      <default>90</default>
+      <min>50</min>
+      <max>115</max>
+    </entry>
   </group>
 </kcfg>

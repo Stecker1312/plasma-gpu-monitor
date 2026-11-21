@@ -18,6 +18,8 @@ panel of the primary display.
 A Plasma 6 panel applet that shows two values from the AMD graphics card: GPU
 utilisation in percent and junction (hotspot) temperature in degrees Celsius.
 The temperature figure changes colour when configured thresholds are exceeded.
+Optionally it shows the CPU temperature (hottest core) next to them, with
+separate thresholds and the same colour and `!` cues.
 
 Background: during extended local AI workloads (LLMs, diffusion models) the GPU
 in this case gets too warm, because exhaust air cannot be replaced. The applet is
@@ -78,7 +80,7 @@ There is no second copy to keep in sync.
 
 ## How it works
 
-`main.qml` creates seven `Sensors.Sensor` objects (module
+`main.qml` creates ten `Sensors.Sensor` objects (module
 `org.kde.ksysguard.sensors`) and derives everything from them:
 
 | Sensor ID | Meaning | Rate |
@@ -89,6 +91,7 @@ There is no second copy to keep in sync.
 | `gpu/gpu0/temp3` | memory in °C | 5 s |
 | `gpu/gpu0/power` | power draw in W | 5 s |
 | `gpu/gpu0/usedVram`, `totalVram` | VRAM in bytes | 5 s |
+| `cpu/all/maximumTemperature` | hottest CPU core in °C | 2 s |
 
 Representations:
 
@@ -96,12 +99,16 @@ Representations:
   tabular figures (`font.features: {"tnum": 1}`) keep digit widths equal, so the
   item only grows when the number of digits changes or the warning cue appears.
   An earlier version reserved the worst case ("100 % 100 °C !!"), which left
-  almost half of the panel item empty — do not reintroduce that.
-- `fullRepresentation` – popup on click, showing every value.
+  almost half of the panel item empty — do not reintroduce that. Without the CPU
+  value the item stays as compact as before; with it, both values get a muted
+  label (`GPU 12 % 64 °C  CPU 55 °C`) so they cannot be confused.
+- `fullRepresentation` – popup on click, showing every value; the CPU section is
+  only visible when enabled.
 - `toolTipSubText` – the same values as a tooltip.
 - Colour: below `warnTemperature` normal, from the warning threshold onwards
   amber (`neutralTextColor`), from `criticalTemperature` onwards red
-  (`negativeTextColor`).
+  (`negativeTextColor`). The CPU uses `cpuWarnTemperature` and
+  `cpuCriticalTemperature` with the same colours and its own `!`/`!!` cue.
 
 ## Pitfalls (each of these has caused a real bug already)
 
@@ -145,6 +152,12 @@ Representations:
     panel scripting). To inspect it, add a temporary
     `Timer { interval: 3000; running: true; onTriggered: root.expanded = true }`
     to the QML, restart plasmashell, screenshot, then remove the timer again.
+12. `msgmerge` fuzzy-matches short new strings against similar existing ones
+    (`CPU` against `GPU`, `Show CPU temperature in the panel` against
+    `Show utilisation in the panel`). Those guesses are wrong by construction.
+    After merging, check `grep '^#, fuzzy' po/*.po`, remove the fuzzy flags and
+    set the new `msgstr` values explicitly. `check.sh` checks for missing
+    strings, not for fuzzy ones.
 
 ## Accessibility
 
@@ -173,7 +186,8 @@ systemctl --user restart plasma-plasmashell.service
 ```
 
 Expected: one node with `role=button`, `name="GPU"` and a description such as
-`Utilisation: 4 %, Junction (Hotspot): 47 °C, Critical`.
+`Utilisation: 4 %, Junction (Hotspot): 47 °C, Critical`. With the CPU enabled the
+name becomes `GPU / CPU` and the description gains `, CPU: 46 °C`.
 
 
 ## Localisation
@@ -226,8 +240,9 @@ Image.open('/tmp/panel.png').crop((1400, 1140, 1920, 1200)).save('/tmp/panel_cro
 "
 ```
 
-The widget must show a value in the format `12 % 64 °C`. If it shows `-- °C`,
-`ksystemstats` is not delivering values — check this first:
+The widget must show a value in the format `12 % 64 °C`, or
+`GPU 12 % 64 °C  CPU 55 °C` when the CPU temperature is enabled. If it shows
+`-- °C`, `ksystemstats` is not delivering values — check this first:
 
 ```bash
 busctl --user call org.kde.ksystemstats1 /org/kde/ksystemstats1 \
@@ -255,13 +270,15 @@ Plasma), and removing it again afterwards.
 ## Versioning
 
 - The version lives in `package/metadata.json` (`KPlugin.Version`, currently
-  `1.0`).
+  `1.7`).
 - Increase it for functional changes; the applet ID stays the same.
 - Commit convention: `impl:`, `docs:`, `fix:` plus a short imperative message.
 
 ## Known limitations
 
 - Single GPU only (`gpu/gpu0`). Multi-GPU is not covered.
+- CPU temperature is the hottest core (`cpu/all/maximumTemperature`), not a
+  per-core breakdown.
 - No history, no graph — current values only.
 - NVIDIA untested.
 - The sensor IDs come from `ksystemstats`; if KDE changes them, the list in

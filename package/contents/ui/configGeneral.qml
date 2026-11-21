@@ -9,6 +9,14 @@ Kirigami.FormLayout {
     property alias cfg_warnTemperature: warnSpin.value
     property alias cfg_criticalTemperature: criticalSpin.value
     property alias cfg_showUsage: showUsageCheck.checked
+    property alias cfg_showCpuTemperature: showCpuCheck.checked
+    property alias cfg_cpuWarnTemperature: cpuWarnSpin.value
+    property alias cfg_cpuCriticalTemperature: cpuCriticalSpin.value
+
+    QQC.Label {
+        Kirigami.FormData.isSection: true
+        text: i18n("GPU")
+    }
 
     QQC.SpinBox {
         id: warnSpin
@@ -34,6 +42,38 @@ Kirigami.FormLayout {
         id: showUsageCheck
         Kirigami.FormData.label: i18n("Display:")
         text: i18n("Show utilisation in the panel")
+    }
+
+    QQC.Label {
+        Kirigami.FormData.isSection: true
+        text: i18n("CPU")
+    }
+
+    QQC.CheckBox {
+        id: showCpuCheck
+        text: i18n("Show CPU temperature in the panel")
+    }
+
+    QQC.SpinBox {
+        id: cpuWarnSpin
+        visible: showCpuCheck.checked
+        Kirigami.FormData.label: i18n("Warn from:")
+        from: 40
+        to: 110
+        stepSize: 1
+        textFromValue: function (value) { return value + " °C" }
+        valueFromText: function (text) { return parseInt(text) }
+    }
+
+    QQC.SpinBox {
+        id: cpuCriticalSpin
+        visible: showCpuCheck.checked
+        Kirigami.FormData.label: i18n("Critical from:")
+        from: 50
+        to: 115
+        stepSize: 1
+        textFromValue: function (value) { return value + " °C" }
+        valueFromText: function (text) { return parseInt(text) }
     }
 
     QQC.Label {

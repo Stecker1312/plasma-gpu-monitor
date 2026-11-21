@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GPU Monitor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-24 11:39+0200\n"
+"POT-Creation-Date: 2026-10-24 12:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,23 +17,42 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: package/contents/ui/configGeneral.qml:15
+#: package/contents/ui/configGeneral.qml:18 package/contents/ui/main.qml:108
+#: package/contents/ui/main.qml:139 package/contents/ui/main.qml:174
+#: package/contents/ui/main.qml:232
+msgid "GPU"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:23
+#: package/contents/ui/configGeneral.qml:60
 msgid "Warn from:"
 msgstr ""
 
-#: package/contents/ui/configGeneral.qml:25
+#: package/contents/ui/configGeneral.qml:33
+#: package/contents/ui/configGeneral.qml:71
 msgid "Critical from:"
 msgstr ""
 
-#: package/contents/ui/configGeneral.qml:35
+#: package/contents/ui/configGeneral.qml:43
 msgid "Display:"
 msgstr ""
 
-#: package/contents/ui/configGeneral.qml:36
+#: package/contents/ui/configGeneral.qml:44
 msgid "Show utilisation in the panel"
 msgstr ""
 
-#: package/contents/ui/configGeneral.qml:41
+#: package/contents/ui/configGeneral.qml:49 package/contents/ui/main.qml:91
+#: package/contents/ui/main.qml:108 package/contents/ui/main.qml:117
+#: package/contents/ui/main.qml:139 package/contents/ui/main.qml:204
+#: package/contents/ui/main.qml:281
+msgid "CPU"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:54
+msgid "Show CPU temperature in the panel"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:81
 msgid ""
 "The measured value is the junction (hotspot) temperature, not the edge "
 "temperature."
@@ -41,32 +60,27 @@ msgstr ""
 
 #. Text for screen readers: values plus the warning state, since colour and
 #. the "!" cue are visual only.
-#: package/contents/ui/main.qml:56
+#: package/contents/ui/main.qml:76 package/contents/ui/main.qml:77
 msgid "Critical"
 msgstr ""
 
-#: package/contents/ui/main.qml:56
+#: package/contents/ui/main.qml:76 package/contents/ui/main.qml:77
 msgid "Warning"
 msgstr ""
 
-#: package/contents/ui/main.qml:59 package/contents/ui/main.qml:171
+#: package/contents/ui/main.qml:84 package/contents/ui/main.qml:242
 msgid "Utilisation"
 msgstr ""
 
-#: package/contents/ui/main.qml:60 package/contents/ui/main.qml:174
+#: package/contents/ui/main.qml:85 package/contents/ui/main.qml:245
 msgid "Junction (Hotspot)"
 msgstr ""
 
-#: package/contents/ui/main.qml:62 package/contents/ui/main.qml:82
+#: package/contents/ui/main.qml:88 package/contents/ui/main.qml:120
 msgid "No GPU sensors found."
 msgstr ""
 
-#: package/contents/ui/main.qml:74 package/contents/ui/main.qml:98
-#: package/contents/ui/main.qml:161
-msgid "GPU"
-msgstr ""
-
-#: package/contents/ui/main.qml:76
+#: package/contents/ui/main.qml:110
 msgid ""
 "Utilisation: %1\n"
 "Junction: %2\n"
@@ -75,32 +89,40 @@ msgid ""
 "Power: %5"
 msgstr ""
 
-#: package/contents/ui/main.qml:177
+#: package/contents/ui/main.qml:248
 msgid "Edge"
 msgstr ""
 
-#: package/contents/ui/main.qml:180
+#: package/contents/ui/main.qml:251
 msgid "Memory"
 msgstr ""
 
-#: package/contents/ui/main.qml:183
+#: package/contents/ui/main.qml:254
 msgid "Power"
 msgstr ""
 
-#: package/contents/ui/main.qml:186
+#: package/contents/ui/main.qml:257
 msgid "Clock"
 msgstr ""
 
-#: package/contents/ui/main.qml:192
+#: package/contents/ui/main.qml:263
 msgid "Fan"
 msgstr ""
 
-#: package/contents/ui/main.qml:198
+#: package/contents/ui/main.qml:269
 msgid "VRAM"
 msgstr ""
 
-#: package/contents/ui/main.qml:210
+#: package/contents/ui/main.qml:293
+msgid "Temperature"
+msgstr ""
+
+#: package/contents/ui/main.qml:300
 msgid "Warning from %1 °C, critical from %2 °C (junction)."
+msgstr ""
+
+#: package/contents/ui/main.qml:303
+msgid "CPU: warning from %1 °C, critical from %2 °C."
 msgstr ""
 
 #: package/contents/config/config.qml:6
