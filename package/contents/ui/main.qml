@@ -32,6 +32,7 @@ PlasmoidItem {
     readonly property real vramUsedValue: valueOf(vramUsedSensor)
     readonly property real vramTotalValue: valueOf(vramTotalSensor)
     readonly property real cpuTemperatureValue: valueOf(cpuTemperatureSensor)
+    readonly property real cpuUsageValue: valueOf(cpuUsageSensor)
 
     readonly property real vramUnit: 1024 * 1024 * 1024
 
@@ -68,6 +69,7 @@ PlasmoidItem {
     readonly property string cpuStateCue: cpuCritical ? "!!" : (cpuWarning ? "!" : "")
 
     readonly property string usageText: Math.round(usageValue) + " %"
+    readonly property string cpuUsageText: Math.round(cpuUsageValue) + " %"
     readonly property string temperatureText: hasData ? Math.round(junctionValue) + " °C" + gpuStateCue : "-- °C"
     readonly property string cpuTemperatureText: cpuHasData ? Math.round(cpuTemperatureValue) + " °C" + cpuStateCue : "-- °C"
 
@@ -88,7 +90,7 @@ PlasmoidItem {
             text = i18n("No GPU sensors found.");
         }
         if (showCpuTemperature) {
-            text += ", " + i18n("CPU") + ": " + cpuAccessibleValue
+            text += ", " + i18n("CPU") + ": " + cpuUsageText + ", " + cpuAccessibleValue
                   + (cpuStateText ? ", " + cpuStateText : "");
         }
         return text;
@@ -104,6 +106,7 @@ PlasmoidItem {
     Sensors.Sensor { id: vramUsedSensor; sensorId: "gpu/gpu0/usedVram"; updateRateLimit: 5000 }
     Sensors.Sensor { id: vramTotalSensor; sensorId: "gpu/gpu0/totalVram"; updateRateLimit: 5000 }
     Sensors.Sensor { id: cpuTemperatureSensor; sensorId: "cpu/all/maximumTemperature"; updateRateLimit: 2000 }
+    Sensors.Sensor { id: cpuUsageSensor; sensorId: "cpu/all/usage"; updateRateLimit: 2000 }
 
     toolTipMainText: root.showCpuTemperature ? i18n("GPU") + " / " + i18n("CPU") : i18n("GPU")
     toolTipSubText: hasData
@@ -114,7 +117,7 @@ PlasmoidItem {
                Math.round(memoryValue) + " °C",
                Math.round(powerValue) + " W")
           + (root.showCpuTemperature
-             ? "\n" + i18n("CPU") + ": " + root.cpuAccessibleValue
+             ? "\n" + i18n("CPU") + ": " + root.cpuUsageText + ", " + root.cpuAccessibleValue
                + (root.cpuStateText ? " (" + root.cpuStateText + ")" : "")
              : "")
         : i18n("No GPU sensors found.")
@@ -209,6 +212,14 @@ PlasmoidItem {
                 }
 
                 Text {
+                    text: root.cpuUsageText
+                    color: Kirigami.Theme.textColor
+                    font.family: Kirigami.Theme.defaultFont.family
+                    font.pointSize: Kirigami.Theme.defaultFont.pointSize
+                    font.features: ({ "tnum": 1 })
+                }
+
+                Text {
                     text: root.cpuTemperatureText
                     color: root.cpuTemperatureColor
                     font.family: Kirigami.Theme.defaultFont.family
@@ -289,6 +300,9 @@ PlasmoidItem {
             columnSpacing: Kirigami.Units.largeSpacing
             rowSpacing: Kirigami.Units.smallSpacing
             Layout.fillWidth: true
+
+            QQC.Label { text: i18n("Utilisation") }
+            QQC.Label { text: root.cpuUsageText; Layout.alignment: Qt.AlignRight }
 
             QQC.Label { text: i18n("Temperature") }
             QQC.Label { text: root.cpuTemperatureText; color: root.cpuTemperatureColor; Layout.alignment: Qt.AlignRight }

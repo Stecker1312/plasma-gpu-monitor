@@ -80,7 +80,7 @@ There is no second copy to keep in sync.
 
 ## How it works
 
-`main.qml` creates ten `Sensors.Sensor` objects (module
+`main.qml` creates eleven `Sensors.Sensor` objects (module
 `org.kde.ksysguard.sensors`) and derives everything from them:
 
 | Sensor ID | Meaning | Rate |
@@ -92,6 +92,7 @@ There is no second copy to keep in sync.
 | `gpu/gpu0/power` | power draw in W | 5 s |
 | `gpu/gpu0/usedVram`, `totalVram` | VRAM in bytes | 5 s |
 | `cpu/all/maximumTemperature` | hottest CPU core in °C | 2 s |
+| `cpu/all/usage` | total CPU utilisation in % | 2 s |
 
 Representations:
 
@@ -101,7 +102,7 @@ Representations:
   An earlier version reserved the worst case ("100 % 100 °C !!"), which left
   almost half of the panel item empty — do not reintroduce that. Without the CPU
   value the item stays as compact as before; with it, both values get a muted
-  label (`GPU 12 % 64 °C  CPU 55 °C`) so they cannot be confused.
+  label (`GPU 12 % 64 °C  CPU 5 % 55 °C`) so they cannot be confused.
 - `fullRepresentation` – popup on click, showing every value; the CPU section is
   only visible when enabled.
 - `toolTipSubText` – the same values as a tooltip.
@@ -187,7 +188,7 @@ systemctl --user restart plasma-plasmashell.service
 
 Expected: one node with `role=button`, `name="GPU"` and a description such as
 `Utilisation: 4 %, Junction (Hotspot): 47 °C, Critical`. With the CPU enabled the
-name becomes `GPU / CPU` and the description gains `, CPU: 46 °C`.
+name becomes `GPU / CPU` and the description gains `, CPU: 5 %, 46 °C`.
 
 
 ## Localisation
@@ -241,7 +242,7 @@ Image.open('/tmp/panel.png').crop((1400, 1140, 1920, 1200)).save('/tmp/panel_cro
 ```
 
 The widget must show a value in the format `12 % 64 °C`, or
-`GPU 12 % 64 °C  CPU 55 °C` when the CPU temperature is enabled. If it shows
+`GPU 12 % 64 °C  CPU 5 % 55 °C` when the CPU values are enabled. If it shows
 `-- °C`, `ksystemstats` is not delivering values — check this first:
 
 ```bash
@@ -270,7 +271,7 @@ Plasma), and removing it again afterwards.
 ## Versioning
 
 - The version lives in `package/metadata.json` (`KPlugin.Version`, currently
-  `1.7`).
+  `1.8`).
 - Increase it for functional changes; the applet ID stays the same.
 - Commit convention: `impl:`, `docs:`, `fix:` plus a short imperative message.
 

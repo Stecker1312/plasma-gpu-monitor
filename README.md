@@ -1,8 +1,8 @@
 # GPU Monitor – Plasma applet
 
 Shows **GPU utilisation and junction temperature** in the KDE panel — and warns
-you with colour before the graphics card gets too hot. The **CPU temperature**
-can be shown as well, with its own warning thresholds.
+you with colour before the graphics card gets too hot. **CPU utilisation and
+temperature** can be shown as well, with their own warning thresholds.
 
 ![Screenshot](docs/screenshot.png)
 
@@ -28,7 +28,8 @@ Both thresholds are configurable.
 ## Features
 
 - Utilisation in percent and junction temperature directly in the panel
-- Optional CPU temperature (hottest core) next to it, switched on in the settings
+- Optional CPU utilisation and temperature (hottest core) next to it, switched
+  on in the settings
 - Colour-coded temperature warnings for GPU and CPU that do **not** rely on
   colour alone: an exclamation mark (`!` warning, `!!` critical) accompanies the
   colour
@@ -73,7 +74,7 @@ Right-click the widget → **Configure GPU Monitor**
 - GPU warning threshold in °C (default 85)
 - GPU critical threshold in °C (default 100)
 - show or hide the utilisation figure in the panel
-- show or hide the CPU temperature in the panel (default off)
+- show or hide the CPU values (utilisation and temperature) in the panel (default off)
 - CPU warning and critical thresholds in °C (default 80 and 90)
 
 The GPU thresholds refer to the junction temperature. AMD specifies 110 °C as
@@ -115,7 +116,7 @@ only works for people who can see colour or use a mouse:
 - **Not colour-only.** Above the warning threshold the value gains `!`, above the
   critical threshold `!!`. Colour perception is not required to notice the state.
 - **Screen reader support.** The panel item exposes itself as a button named
-  "GPU" (or "GPU / CPU" when the CPU temperature is shown) with a description
+  "GPU" (or "GPU / CPU" when the CPU values are shown) with a description
   like "Utilisation: 12 %, Junction (Hotspot): 92 °C, Warning". The state word is
   included because colour and `!` are visual.
 - **Keyboard accessible.** The item is focusable with Tab and opens with Enter or
